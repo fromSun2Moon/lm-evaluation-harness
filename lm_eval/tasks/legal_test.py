@@ -18,6 +18,7 @@ _CITATION ="""
 }
 """
 
+
 class LegalBinary(Task):
     """ Predict civil(민사) or criminal(형사) case"""
     VERSION = 0
