@@ -50,6 +50,14 @@ from . import blimp
 from . import asdiv
 from . import gsm8k
 from . import storycloze
+from . import kobest
+from . import nsmc
+from . import klue
+from . import ko_translation
+from . import korquad
+from . import korunsmile
+from . import kohatespeech
+from . import kold
 from . import toxigen
 from . import crowspairs
 from . import json
@@ -65,12 +73,12 @@ from . import mgsm
 # Translation tasks
 ########################################
 
+
 # 6 total
 gpt3_translation_benchmarks = {
     "wmt14": ["en-fr", "fr-en"],  # French
     "wmt16": ["en-ro", "ro-en", "de-en", "en-de"],  # German, Romanian
 }
-
 
 # 28 total
 selected_translation_benchmarks = {
@@ -90,7 +98,7 @@ all_translation_benchmarks = {
 # All tasks
 ########################################
 
-
+# task 레지스트리에 클래스 추가 
 TASK_REGISTRY = {
     # GLUE
     "cola": glue.CoLA,
@@ -318,6 +326,25 @@ TASK_REGISTRY = {
     # "storycloze_2016": storycloze.StoryCloze2016,
     # "storycloze_2018": storycloze.StoryCloze2018,
     # "sat": sat.SATAnalogies,
+    "kold_level_a": kold.KoldLevelA,
+    "kold_level_b": kold.KoldLevelB,
+    "klue_sts": klue.STS,
+    "klue_ynat": klue.YNAT,
+    "klue_nli": klue.NLI,
+    "klue_mrc": klue.MRC,
+    "nsmc": nsmc.NSMC,    
+    "korquad": korquad.Korquad,
+    "kobest_boolq": kobest.BoolQ,
+    "kobest_copa": kobest.COPA,
+    "kobest_wic": kobest.WiC,
+    "kobest_hellaswag": kobest.HellaSwag,
+    "kobest_sentineg": kobest.SentiNeg,
+    "ko_en_translation": ko_translation.KoEnTranslation,
+    "en_ko_translation": ko_translation.EnKoTranslation,
+    "korunsmile": korunsmile.KorUnSmile,
+    "kohatespeech":kohatespeech.HateSpeech,
+    "kohatespeech_gen_bias":kohatespeech.GenderBias,
+    "kohatespeech_apeach":kohatespeech.Apeach,
     **xcopa.construct_tasks(),
     **bigbench.create_all_tasks(),
     **xstorycloze.create_all_tasks(),
@@ -326,7 +353,6 @@ TASK_REGISTRY = {
     **xnli.construct_tasks(),
     **mgsm.construct_tasks(),
 }
-
 
 ALL_TASKS = sorted(list(TASK_REGISTRY))
 
